@@ -4584,6 +4584,8 @@
         "tools/net5.0/ko/FSharp.DependencyManager.Nuget.resources.dll",
         "tools/net5.0/log.20210805.txt",
         "tools/net5.0/log.20210806.txt",
+        "tools/net5.0/log.20210809.txt",
+        "tools/net5.0/log.20210812.txt",
         "tools/net5.0/log.txt",
         "tools/net5.0/pl/FSharp.Compiler.Service.resources.dll",
         "tools/net5.0/pl/FSharp.Core.resources.dll",
@@ -4660,11 +4662,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj",
+      "projectUniqueName": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj",
       "projectName": "cellularAutomata",
-      "projectPath": "c:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj",
+      "projectPath": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj",
       "packagesPath": "C:\\Users\\akos.steiner\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\obj\\",
+      "outputPath": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\akos.steiner\\AppData\\Roaming\\NuGet\\NuGet.Config",

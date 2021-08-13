@@ -14,7 +14,7 @@ module Client =
         let (!!) (b: bool) = if b then 1 else 0
         let trigger = Var.Create false
         let lm : ListModel<(int * int), (int * int) * View<bool>> = ListModel.Create fst []
-        let dimensions = (80,80)
+        let dimensions = (25,25)
         let createTriggered (x: int, y: int) (maxX, maxY) =
             let tr = Var.Create false
             lm.Add((x, y), tr.View)

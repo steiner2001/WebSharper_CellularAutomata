@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj": {}
+    "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj": {}
   },
   "projects": {
-    "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj": {
+    "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj",
+        "projectUniqueName": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj",
         "projectName": "cellularAutomata",
-        "projectPath": "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj",
+        "projectPath": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj",
         "packagesPath": "C:\\Users\\akos.steiner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\obj\\",
+        "outputPath": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\akos.steiner\\AppData\\Roaming\\NuGet\\NuGet.Config",

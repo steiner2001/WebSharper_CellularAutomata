@@ -650,7 +650,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.Main=(trigger=Var$1.Create$1(false),(lm=ListModel.Create(function(t)
   {
    return t[0];
-  },T.Empty),(dimensions=[80,80],(a=Doc.Element("div",[],[Doc.Element("div",[],List.ofSeq(Seq.delay(function()
+  },T.Empty),(dimensions=[25,25],(a=Doc.Element("div",[],[Doc.Element("div",[],List.ofSeq(Seq.delay(function()
   {
    return createRows.apply(null,dimensions);
   }))),Doc.Element("div",[],[Doc.Button("Start",[],function()

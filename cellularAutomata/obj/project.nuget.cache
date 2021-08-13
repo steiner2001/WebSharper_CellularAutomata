@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PlEoJca1UScf0REQvvpLKKM2uY23F+TyzmRjli4hFXVBCFu/lUupyPalrKdYwC6C3KiaZexOiZoBvNPZVK+DDA==",
+  "dgSpecHash": "XVjX/8UytV1GEwFlkQoYBZoe7qVCSXfUe0yn8PHW8mPg/bxcJENqeXk2xOYo7TgQZt9HjOVPm5Y1ICKiLVfHbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\akos.steiner\\Desktop\\cellularAutomata\\cellularAutomata.fsproj",
+  "projectFilePath": "C:\\Users\\akos.steiner\\Desktop\\git\\WebSharper_GameOfLife\\cellularAutomata\\cellularAutomata.fsproj",
   "expectedPackageFiles": [
     "C:\\Users\\akos.steiner\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
     "C:\\Users\\akos.steiner\\.nuget\\packages\\htmlagilitypack\\1.11.0\\htmlagilitypack.1.11.0.nupkg.sha512",
