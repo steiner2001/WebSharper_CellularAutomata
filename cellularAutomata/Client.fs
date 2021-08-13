@@ -41,20 +41,22 @@ module Client =
                             findDir (x+1, y-1)
                         let southeast = 
                             findDir (x+1, y+1)
-                        View.Map2 (fun a b -> Some (a + b))
+                        let current =
+                            findDir (x, y)
+                        View.Map2 (fun c counter -> if counter = 0 && not c then None else Some counter)
+                            current
                             (View.Map2 (+)
-                                (View.Map2 (fun x y -> !!x + !!y) north south)
-                                (View.Map2 (fun x y -> !!x + !!y) east west))
-                            (View.Map2 (+)
-                                (View.Map2 (fun x y -> !!x + !!y) northwest southeast)
-                                (View.Map2 (fun x y -> !!x + !!y) northeast southwest))
+                                (View.Map2 (+)
+                                    (View.Map2 (fun x y -> !!x + !!y) north south)
+                                    (View.Map2 (fun x y -> !!x + !!y) east west))
+                                (View.Map2 (+)
+                                    (View.Map2 (fun x y -> !!x + !!y) northwest southeast)
+                                    (View.Map2 (fun x y -> !!x + !!y) northeast southwest)))
                     else
                         View.Const None
                 )
             baseView
-            |> View.Map2 (fun x y -> x,y) tr.View
-            |> View.Sink (fun (amIFlagged, counter) ->
-                match counter with
+            |> View.Sink (function
                 | Some counter ->
                     async {
                         do! Async.Sleep 100
