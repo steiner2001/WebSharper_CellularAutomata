@@ -7,12 +7,18 @@ open WebSharper.UI.Client
 
 [<JavaScript>]
 module Client =
+    (* type Node () =
+        let mutable isActive = Var.Create false
+        let mutable siblings = View.Const 0
+        member this.IsActive = isActive
+        member this.Siblings = siblings *)
+ 
     [<SPAEntryPoint>]
     let Main =
         let (!!) (b: bool) = if b then 1 else 0
         let trigger = Var.Create false
         let lm : ListModel<(int * int), (int * int) * View<bool>> = ListModel.Create fst []
-        let dimensions = (30,50)
+        let dimensions = (40,60)
         let createTriggered (x: int, y: int) =
             let tr = Var.Create false
             lm.Add((x, y), tr.View)
@@ -21,6 +27,7 @@ module Client =
                 |> View.Map2 (fun x y -> x, y) trigger.View
                 |> View.Bind (fun (trigger, _) ->
                     if trigger then
+                        //lm.Wrap
                         let findDir k =
                             lm.TryFindByKey k
                             |> Option.map (snd)
@@ -66,7 +73,6 @@ module Client =
                         else if counter = 3 then
                             tr.UpdateMaybe (fun x ->
                                 if x then None else Some true)
-                        //else tr.UpdateMaybe (fun x -> if x then None else Some true)
 
                     }
                     |> Async.Start
@@ -88,10 +94,11 @@ module Client =
             div [] [
                 yield! createRows dimensions
             ]
-            div [] [
-                Doc.Button "Start" [] (fun _ ->
-                    trigger.Update not
-                )
+            button [
+                on.click (fun _ _ ->
+                    trigger.Update not)
+            ] [
+                textView (trigger.View.Map(fun x -> if x then "Stop" else "Start"))
             ]
         ]
         |> Doc.RunById "main"
