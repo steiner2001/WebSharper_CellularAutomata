@@ -13,7 +13,7 @@ module Client =
         let trigger = Var.Create false
         let lm : ListModel<(int * int), (int * int) * View<bool>> = ListModel.Create fst []
         let dimensions = (30,50)
-        let createTriggered (x: int, y: int) (maxX, maxY) =
+        let createTriggered (x: int, y: int) =
             let tr = Var.Create false
             lm.Add((x, y), tr.View)
             let baseView =
@@ -78,11 +78,11 @@ module Client =
             )
             div [on.click (fun _ _ -> tr.Update not); attr.classDyn (tr.View.Map(fun x -> if x then "gol-box gol-triggered" else "gol-box"))] [] //[if (x <> (fst dimensions)/2 || y <> (snd dimensions)/2) then yield attr.disabled "disabled"] tr
             
-        let createRow (x, y) (mX, mY) =
-            List.init y (fun i -> createTriggered (x, i) (mX, mY))
+        let createRow (x, y)=
+            List.init y (fun i -> createTriggered (x, i))
              
         let createRows (x, y)=
-            List.init x (fun i -> div [attr.``class`` "gol-row"] (createRow (i, y) (x, y)))
+            List.init x (fun i -> div [attr.``class`` "gol-row"] (createRow (i, y)))
 
         div [] [
             div [] [
