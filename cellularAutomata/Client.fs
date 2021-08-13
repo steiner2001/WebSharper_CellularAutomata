@@ -16,46 +16,54 @@ module Client =
         let createTriggered (x: int, y: int) (maxX, maxY) =
             let tr = Var.Create false
             lm.Add((x, y), tr.View)
-            lm.View
-            |> View.Map2 (fun x y -> x, y) trigger.View
-            |> View.Bind (fun (trigger, lms) ->
-                if trigger then
-                    let north =
-                        if x = 0 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x-1, y)) |> snd
-                    let south =
-                        if x = maxX-1 then View.Const  false else lms |> Seq.find (fun (k, _) -> k = (x+1, y)) |> snd
-                    let west =
-                        if y = 0 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x, y-1)) |> snd
-                    let east =
-                        if y = maxY-1 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x, y+1)) |> snd
-                    let northwest = 
-                        if x = 0 || y = 0 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x-1, y-1)) |> snd
-                    let northeast = 
-                        if x = 0 || y = maxY-1 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x-1, y+1)) |> snd
-                    let southwest = 
-                        if x = maxX-1 || y = 0 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x+1, y-1)) |> snd
-                    let southeast = 
-                        if x = maxX-1 || y = maxY-1 then View.Const false else lms |> Seq.find (fun (k, _) -> k = (x+1, y+1)) |> snd
-                    View.Map2 (fun a b -> Some (a + b))
-                        (View.Map2 (+)
-                            (View.Map2 (fun x y -> !!x + !!y) north south)
-                            (View.Map2 (fun x y -> !!x + !!y) east west))
-                        (View.Map2 (+)
-                            (View.Map2 (fun x y -> !!x + !!y) northwest southeast)
-                            (View.Map2 (fun x y -> !!x + !!y) northeast southwest))
-                else
-                    View.Const None
-            )
-            |> View.Sink (fun (counter) ->
+            let baseView =
+                lm.View
+                |> View.Map2 (fun x y -> x, y) trigger.View
+                |> View.Bind (fun (trigger, _) ->
+                    if trigger then
+                        let findDir k =
+                            lm.TryFindByKey k
+                            |> Option.map (snd)
+                            |> Option.defaultValue (View.Const false)
+                        let north =
+                            findDir (x-1, y)
+                        let south =
+                            findDir (x+1, y)
+                        let west =
+                            findDir (x, y-1)
+                        let east =
+                            findDir (x, y+1)
+                        let northwest = 
+                            findDir (x-1, y-1)
+                        let northeast = 
+                            findDir (x-1, y+1)
+                        let southwest = 
+                            findDir (x+1, y-1)
+                        let southeast = 
+                            findDir (x+1, y+1)
+                        View.Map2 (fun a b -> Some (a + b))
+                            (View.Map2 (+)
+                                (View.Map2 (fun x y -> !!x + !!y) north south)
+                                (View.Map2 (fun x y -> !!x + !!y) east west))
+                            (View.Map2 (+)
+                                (View.Map2 (fun x y -> !!x + !!y) northwest southeast)
+                                (View.Map2 (fun x y -> !!x + !!y) northeast southwest))
+                    else
+                        View.Const None
+                )
+            baseView
+            |> View.Map2 (fun x y -> x,y) tr.View
+            |> View.Sink (fun (amIFlagged, counter) ->
                 match counter with
-                | None -> ()
                 | Some counter ->
                     async {
                         do! Async.Sleep 100
                         if counter < 2 || counter > 3 then
-                            tr.UpdateMaybe (fun x -> if not x then None else Some false)
+                            tr.UpdateMaybe (fun x ->
+                                if not x then None else Some false)
                         else if counter = 3 then
-                            tr.UpdateMaybe (fun _ -> Some true)
+                            tr.UpdateMaybe (fun x ->
+                                if x then None else Some true)
                         //else tr.UpdateMaybe (fun x -> if x then None else Some true)
 
                     }
@@ -64,6 +72,7 @@ module Client =
                             tr.UpdateMaybe (fun x -> if not x then None else Some false)
                         else if counter = 3 then
                             tr.UpdateMaybe (fun _ -> Some true) *)
+                | _ -> ()
             )
             div [on.click (fun _ _ -> tr.Update not); attr.classDyn (tr.View.Map(fun x -> if x then "gol-box gol-triggered" else "gol-box"))] [] //[if (x <> (fst dimensions)/2 || y <> (snd dimensions)/2) then yield attr.disabled "disabled"] tr
             
