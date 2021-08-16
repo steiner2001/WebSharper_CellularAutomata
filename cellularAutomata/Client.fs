@@ -90,7 +90,9 @@ module Client =
         let createRows (x, y)=
             List.init x (fun i -> div [attr.``class`` "gol-row"] (createRow (i, y)))
 
-        div [] [
+        div [
+            //on.viewUpdate
+        ] [
             div [] [
                 yield! createRows dimensions
             ]
