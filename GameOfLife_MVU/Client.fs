@@ -10,8 +10,8 @@ open WebSharper.Mvu
 [<JavaScript>]
 module Counter =
     
-    let height = 20 - 1
-    let width = 30 - 1
+    let height = 30 - 1
+    let width = 40 - 1
 
     type Model = { 
         Grid: ((int*int) * bool) list
