@@ -14,6 +14,18 @@ jobs:
           persist-credentials: false 
           submodules: true
 
+      - name: Building GameOfLife_Fable
+        run: dotnet build GameOfLife_Fable/src
+
+      - name: Building GameOfLife_MVU
+        run: dotnet build GameOfLife_MVU
+
+      - name: Building GameOfLife_UI
+        run: dotnet build GameOfLife_UI
+
+      - name: Building LangtonsAnt_MVU
+        run: dotnet build LangtonsAnt_MVU
+
       - name: Remove gitignore
         run: rm .gitignore
 
@@ -22,4 +34,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: github-pages
-          publish_dir: ./
+          publish_dir: build/
