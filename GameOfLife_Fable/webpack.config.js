@@ -8,7 +8,7 @@ module.exports = {
     mode: "development",
     entry: "./src/App.fs.js",
     output: {
-        path: path.join(__dirname, "../build/GameOfLife_Fable"),
+        path: path.join(__dirname, "../build/GameOfLife_Fable/Content"),
         filename: "bundle.js",
     },
     devServer: {

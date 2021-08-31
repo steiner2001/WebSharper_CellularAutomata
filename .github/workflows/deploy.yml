@@ -14,6 +14,15 @@ jobs:
           persist-credentials: false 
           submodules: true
 
+      - name: Add GitHub registry NuGet source
+        run: 
+          dotnet nuget 
+            add source https://nuget.pkg.github.com/dotnet-websharper/index.json 
+            --name github 
+            --username steiner2001
+            --password ${{ secrets.PAT_PACKAGE }} 
+            --store-password-in-clear-text    
+
       - name: Building GameOfLife_Fable
         run: dotnet build GameOfLife_Fable/src
 

@@ -1,5 +1,5 @@
 ﻿{
     "$schema": "https://websharper.com/wsconfig.schema.json",
     "project": "bundle",
-    "outputDir": "../build/GameOfLife_UI"
+    "outputDir": "../build/GameOfLife_UI/Content"
 }
