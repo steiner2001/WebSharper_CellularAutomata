@@ -4,7 +4,6 @@ A cellular automaton (pl. cellular automata, abbrev. CA) is a discrete model of 
 ## Game Of Life
 ### Overview
 The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine. [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-
 ![Game of Life](media/game_of_life.png)
 ### Rules
 * Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -21,7 +20,6 @@ https://github.com/steiner2001/WebSharper_CellularAutomata/tree/master/GameOfLif
 ## Langton's Ant
 ### Overview
 Langton's ant is a two-dimensional universal Turing machine with a very simple set of rules but complex emergent behavior. It was invented by Chris Langton in 1986 and runs on a square lattice of black and white cells. The universality of Langton's ant was proven in 2000. The idea has been generalized in several different ways, such as turmites which add more colors and more states. [Wikipedia](https://en.wikipedia.org/wiki/Langton%27s_ant)
-
 ![Langton's Ant](media/langtons_ant.png)
 ### Rules
 * At a white square, turn 90° clockwise, flip the color of the square, move forward one unit
